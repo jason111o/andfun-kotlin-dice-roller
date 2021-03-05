@@ -18,9 +18,8 @@ package com.example.android.diceroller
 
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,14 +34,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun rollDice() {
-        val randomInt = Random().nextInt(6) + 1
-        // TODO (04) Choose the right drawable resource based on the value of randomInt
+        // TODO DONE (04) Choose the right drawable resource based on the value of randomInt
         // Tip: Use a when expression
+        val diceImage = when (kotlin.random.Random.nextInt(1, 7)) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable .dice_6
+        }
 
-        // TODO (03) Get a reference to the imageView instead
-        val resultText: TextView = findViewById(R.id.result_text)
+        // TODO DONE (03) Get a reference to the imageView instead
+        val diceImageView = findViewById<ImageView>(R.id.dice_image_view)
 
-        // TODO (05) Make the ImageView show the chosen drawable resource
-        resultText.text = randomInt.toString()
+        // TODO DONE (05) Make the ImageView show the chosen drawable resource
+        diceImageView.setImageResource(diceImage)
+
     }
 }
